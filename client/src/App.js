@@ -3,9 +3,27 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 
 import './App.css';
+import  Sidebar  from "./containers/sidebar"
+const users = [
+  {name: "Sam",
+  id: 1
+  },
+  {name: "Ben",
+  id: 2
+  },
+  {name: "Jennifer",
+  id: 3
+  },
+  {name: "Michael",
+  id: 4
+  },
+  {name: "Laura",
+  id: 5
+}]
 
 class App extends Component {
   state = {
+    users: users,
     response: ''
   };
 
@@ -27,14 +45,21 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">{this.state.response}</p>
+        <div className="wrapper">
+          <nav id="sidebar">
+            <Sidebar
+              users = {this.state.users}
+              />
+              {this.state.response}
+          </nav>
+          <div id="content">
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+
 
 export default App;
